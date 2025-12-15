@@ -11,24 +11,27 @@
 
 / {
     macros {
-        cmd_s: cmd_s {
+        screen_shot: cmd_s {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_GUI &kp S>;
-            label = "CMD_S";
-        };
+            bindings =
+                <&macro_press>,
+                <&kp LG(LEFT_SHIFT) &kp N5>,
+                <&macro_release>,
+                <&kp LG(LEFT_SHIFT) &kp NUMBER_5>;
 
-        screenshot: screenshot {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_GUI &kp LEFT_SHIFT &kp NUMBER_5>;
-            label = "SCREENSHOT";
+            label = "CMD_S";
         };
 
         ctrl_c: ctrl_c {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp RCTRL &kp C>;
+            bindings =
+                <&macro_press>,
+                <&kp LC(C)>,
+                <&macro_release>,
+                <&kp LC(C)>;
+
             label = "CTRL_C";
         };
     };
@@ -61,10 +64,10 @@
 
             display-name = "Lower";
             bindings = <
-&kp TAB    &kp N1  &kp N2       &kp N3    &kp N4  &kp N5       &kp N6   &kp N7    &kp UP_ARROW    &kp N9     &kp N0  &kp BSPC
-&none      &none   &screenshot  &none     &none   &kp N8       &none    &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &trans  &trans
-&kp LSHFT  &trans  &trans       &ctrl_c   &trans  &trans       &trans   &trans    &trans          &trans     &trans  &trans
-                                &kp LGUI  &trans  &kp SPACE    &kp RET  &mo 3     &kp RALT
+&kp TAB    &kp N1  &kp N2        &kp N3    &kp N4  &kp N5       &kp N6   &kp N7    &kp UP_ARROW    &kp N9     &kp N0  &kp BSPC
+&none      &none   &screen_shot  &none     &none   &kp N8       &none    &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &trans  &trans
+&kp LSHFT  &trans  &trans        &ctrl_c   &trans  &trans       &trans   &trans    &trans          &trans     &trans  &trans
+                                 &kp LGUI  &trans  &kp SPACE    &kp RET  &mo 3     &kp RALT
             >;
         };
 
